@@ -14,7 +14,8 @@ public typealias AlertActionHandler = (() -> Void)
 public class AlertAction {
 
     public let title: String
-    public let style: AlertActionStyle
+    public let style: UIColor?
+    public let font: UIFont?
     public let handler: AlertActionHandler?
 
     /**
@@ -26,9 +27,10 @@ public class AlertAction {
 
      - returns: An inmutable AlertAction object
      */
-    public init(title: String, style: AlertActionStyle, handler: AlertActionHandler?) {
+    public init(title: String, style: UIColor?, font: UIFont?, handler: AlertActionHandler?) {
         self.title = title
         self.style = style
+        self.font = font
         self.handler = handler
     }
 
@@ -154,7 +156,7 @@ public class AlertViewController: UIViewController, CornerRadiusSettable {
         super.viewDidLoad()
 
         if actions.isEmpty {
-            let okAction = AlertAction(title: "ok 🕶", style: .default, handler: nil)
+            let okAction = AlertAction(title: "ok 🕶", style: .black, font: nil, handler: nil)
             addAction(okAction)
         }
 
@@ -221,7 +223,7 @@ public class AlertViewController: UIViewController, CornerRadiusSettable {
         let title = action.title.uppercased()
         let style = action.style
         toButton.setTitle(title, for: UIControl.State())
-        toButton.setTitleColor(style.color(), for: UIControl.State())
+        toButton.setTitleColor(style, for: UIControl.State())
     }
 
     // MARK: IBAction's
