@@ -36,7 +36,7 @@ public enum PresentationType {
         case .alert:
             return (.custom(size: 270), .custom(size: 180))
         case .beaconAlert:
-            return (.fluid(percentage: 0.8), .fluid(percentage: 0.4))
+            return (.fluid(percentage: 0.8), .fluid(percentage: 0.1))
         case .popup:
             return (.default, .default)
         case .topHalf, .bottomHalf:
