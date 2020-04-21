@@ -14,7 +14,7 @@ public typealias AlertActionHandler = (() -> Void)
 public class AlertAction {
 
     public let title: String
-    public let style: UIColor?
+    public let style: UIColor
     public let font: UIFont?
     public let handler: AlertActionHandler?
 
@@ -27,11 +27,18 @@ public class AlertAction {
 
      - returns: An inmutable AlertAction object
      */
-    public init(title: String, style: UIColor?, font: UIFont?, handler: AlertActionHandler?) {
+    public init(title: String, style: UIColor, font: UIFont?, handler: AlertActionHandler?) {
         self.title = title
         self.style = style
         self.font = font
         self.handler = handler
+    }
+    
+    public init(title: String, style: UIColor) {
+        self.title = title
+        self.style = style
+        self.font = nil
+        self.handler = nil
     }
 
 }
