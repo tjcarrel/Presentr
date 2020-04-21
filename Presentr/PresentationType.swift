@@ -20,6 +20,7 @@ import Foundation
 public enum PresentationType {
 
     case alert
+    case beaconAlert
     case popup
     case topHalf
     case bottomHalf
@@ -34,6 +35,8 @@ public enum PresentationType {
         switch self {
         case .alert:
             return (.custom(size: 270), .custom(size: 180))
+        case .beaconAlert:
+            return (.fluid(percentage: 0.8), .fluid(percentage: 0.4))
         case .popup:
             return (.default, .default)
         case .topHalf, .bottomHalf:
@@ -52,7 +55,7 @@ public enum PresentationType {
     /// - Returns: Returns a 'ModalCenterPosition' enum describing the center point for the presented modal.
     func position() -> ModalCenterPosition {
         switch self {
-        case .alert, .popup:
+        case .alert, .beaconAlert, .popup:
             return .center
         case .topHalf:
             return .topCenter
@@ -82,7 +85,7 @@ public enum PresentationType {
     /// Default round corners setting.
     var shouldRoundCorners: Bool {
         switch self {
-        case .alert, .popup:
+        case .alert, .beaconAlert, .popup:
             return true
         default:
             return false
